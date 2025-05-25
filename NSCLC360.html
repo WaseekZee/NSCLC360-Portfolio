@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSCLC 360</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff7b00;
+            --secondary-color: #ff9e44;
+            --dark-color: #333333;
+            --light-color: #fff8f0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .bg-primary-custom {
+            background-color: var(--primary-color);
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary-color);
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 150px 0;
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 60px;
+            background-color: var(--primary-color);
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40px;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline > li {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 70px;
+        }
+        
+        .timeline > li:before {
+            content: "";
+            position: absolute;
+            left: 35px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .subject-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        
+
+        #home {
+            background-color: #F27B0E; /* Replace this with exact hex from logo image */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .accordion-button.bg-primary-custom {
+            background-color: #ff7b00;
+            color: white;
+        }
+
+        .accordion-button.bg-primary-custom:not(.collapsed) {
+            background-color: #ff7b00;
+            color: white;
+            box-shadow: none;
+        }
+
+        .accordion-button.bg-primary-custom:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+     
+        .milestone-dot {
+            width: 20px;
+            height: 20px;
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px var(--primary-color);
+            z-index: 1;
+        }
+
+        .milestone-card {
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .milestone-card:hover {
+            box-shadow: 0 0 20px rgba(255, 123, 0, 0.3);
+            transform: translateY(-4px);
+        }
+
+
+        .milestone-timeline {
+            position: relative;
+        }
+
+        .milestone-title {
+            position: relative;
+        }
+
+        .milestone-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card-body {
+            padding: 1rem 0.5rem;
+            line-height: 1.4;
+            min-height: 100px; /* Add this to avoid text clipping */
+        }
+
+        .card-title {
+            font-size: 1rem;
+            white-space: normal; /* Allow wrapping */
+        }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary-custom fw-bold" href="#">NSCLC 360</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#intruduction">Intruduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#domain">Domain</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#milestones">Milestones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#what-we-provide">What do we provide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#document">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tools-technologies">Tool and Technologies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-fullscreen d-flex align-items-center justify-content-center text-white text-center">
+        <div class="container">
+            <img src="Images/ChatGPT Image May 22, 2025, 09_22_31 AM.png" alt="NSCLC 360 Logo" class="img-fluid" style="max-width: 600px;">
+        </div>
+    </section>
+
+
+    <!--Intruduction-->
+    <section id="intruduction" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Introduction</h2>
+            <div class="row">
+            <div class="col-lg-12">
+                <p>
+                <strong>NSCLC 360</strong> is a multidisciplinary research initiative focused on Non-Small Cell Lung Cancer (NSCLC), which accounts for approximately 85% of all lung cancer cases globally. Our project aims to revolutionize the prognosis and treatment planning process by leveraging <strong>multiomics data</strong>—including genomics, proteomics, and imaging—combined with advanced machine learning techniques.
+                </p>
+                <p>
+                Despite medical advancements, the complexity of NSCLC poses significant challenges for personalized treatment. Our research seeks to address this by integrating diverse biological data sources to provide a 360-degree perspective on each patient's condition. By applying explainable AI models, we aim to enhance decision-making in early diagnosis, risk stratification, and therapy response prediction.
+                </p>
+                <p>
+                Ultimately, <strong>NSCLC 360</strong> aspires to contribute to the future of precision oncology by offering data-driven insights that empower clinicians and researchers in the fight against lung cancer.
+                </p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="domain" class="py-5 bg-light text-dark">
+        <div class="container">
+            <h2 class="section-title">Our Domain</h2>
+            <div class="accordion" id="domainAccordion">
+
+            <!-- Background -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingBackground">
+                <button class="accordion-button bg-primary-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBackground" aria-expanded="true" aria-controls="collapseBackground">
+                    <i class="fas fa-book me-2"></i> Background
+                </button>
+                </h2>
+                <div id="collapseBackground" class="accordion-collapse collapse show" aria-labelledby="headingBackground" data-bs-parent="#domainAccordion">
+                <div class="accordion-body">
+                    Lung cancer remains the leading cause of cancer-related deaths worldwide, with Non-Small Cell Lung Cancer (NSCLC) accounting for nearly 85% of all cases. Traditional diagnostic methods rely heavily on radiology and pathology, which often fail to capture the complex biological variability among patients. With the rapid evolution of biomedical technology, multiomics data—integrating genomics, proteomics, and radiomics—provides an unprecedented opportunity to understand cancer at a systems level. Our domain focuses on applying machine learning to this integrated data to uncover hidden patterns, predict prognosis, and support clinical decisions.
+                </div>
+                </div>
+            </div>
+
+            <!-- Research Gap -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGap">
+                <button class="accordion-button collapsed bg-primary-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGap" aria-expanded="false" aria-controls="collapseGap">
+                    <i class="fas fa-code-branch me-2"></i> Research Gap
+                </button>
+                </h2>
+                <div id="collapseGap" class="accordion-collapse collapse" aria-labelledby="headingGap" data-bs-parent="#domainAccordion">
+                <div class="accordion-body">
+                    While multiomics data is increasingly available, existing approaches often analyze these modalities in isolation. There is a lack of unified, explainable machine learning models that can integrate heterogeneous datasets to deliver actionable insights in real-world NSCLC prognosis. Furthermore, many AI models remain "black boxes", offering predictions without transparent reasoning—a critical barrier in clinical adoption.
+                </div>
+                </div>
+            </div>
+
+            <!-- Research Problems -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingProblem">
+                <button class="accordion-button collapsed bg-primary-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProblem" aria-expanded="false" aria-controls="collapseProblem">
+                    <i class="fas fa-exclamation-circle me-2"></i> Research Problems
+                </button>
+                </h2>
+                <div id="collapseProblem" class="accordion-collapse collapse" aria-labelledby="headingProblem" data-bs-parent="#domainAccordion">
+                <div class="accordion-body">
+                    <ul>
+                    <li>Lack of integrated frameworks for multiomics-based prognosis in NSCLC.</li>
+                    <li>Limited interpretability in current ML models used for lung cancer prediction.</li>
+                    <li>Challenges in managing class imbalance and data sparsity in clinical datasets.</li>
+                    <li>Insufficient early warning systems for complication prediction post-diagnosis.</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+
+            <!-- Research Objectives -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingObjectives">
+                <button class="accordion-button collapsed bg-primary-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObjectives" aria-expanded="false" aria-controls="collapseObjectives">
+                    <i class="fas fa-bullseye me-2"></i> Research Objectives
+                </button>
+                </h2>
+                <div id="collapseObjectives" class="accordion-collapse collapse" aria-labelledby="headingObjectives" data-bs-parent="#domainAccordion">
+                <div class="accordion-body">
+                    <ul>
+                    <li>Develop an AI-powered framework for NSCLC prognosis using multiomics data fusion.</li>
+                    <li>Incorporate explainable AI techniques (e.g., SHAP, LIME) to interpret predictions.</li>
+                    <li>Evaluate model performance on real-world clinical datasets from TCIA and LIDC-IDRI.</li>
+                    <li>Visualize and report the key biological features influencing patient outcomes.</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones Section (Vertical Timeline Layout) -->
+    <section id="milestones" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Milestones</h2>
+        
+
+        <div class="position-relative px-2">
+        <!-- Center vertical line -->
+        <div class="position-absolute top-0 start-50 translate-middle-x h-100" style="width: 4px; background-color: var(--primary-color); z-index: 0;"></div>
+
+        <!-- Milestone 1 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Project Topic Assessment</h5>
+                <p class="text-muted small">(No marks allocated)</p>
+                <p>Initial topic assessment discussion with supervisor to validate the research scope and problem relevance.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">May</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="me-3 text-end">
+                <h6 class="text-primary-custom mb-0 fw-bold">May</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Project Charter Submission</h5>
+                <p class="text-muted small">(No marks allocated)</p>
+                <p>Charter outlining project scope, problem definition, and objective alignment submitted for approval.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Project Proposal Presentation</h5>
+                <p class="text-muted small">(5%)</p>
+                <p>Proposal pitch to a panel of judges explaining the planned solution and research strategy.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">July</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="me-3 text-end">
+                <h6 class="text-primary-custom mb-0 fw-bold">August</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Project Proposal Report</h5>
+                <p class="text-muted small">(7.5%)</p>
+                <p>In-depth proposal report describing background, objectives, problem scope, and initial research plan.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 5 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Progress Presentation 1</h5>
+                <p class="text-muted small">(15%)</p>
+                <p>Demonstration of 25% completion of the solution development and experimentation process.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">December</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 6 -->
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="me-3 text-end">
+                <h6 class="text-primary-custom mb-0 fw-bold">December</h6>
+                <h3 class="fw-bold mb-0">2024</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Status Document 1</h5>
+                <p class="text-muted small">(1%)</p>
+                <p>Status update document on research and progress submitted to panel.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 7 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Progress Presentation 2</h5>
+                <p class="text-muted small">(15%)</p>
+                <p>Demonstration of 60% project completion to judges including intermediate results and refinement.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">March</h6>
+                <h3 class="fw-bold mb-0">2025</h3>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 8 -->
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="me-3 text-end">
+                <h6 class="text-primary-custom mb-0 fw-bold">April</h6>
+                <h3 class="fw-bold mb-0">2025</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Final Report Submission</h5>
+                <p class="text-muted small">(15%)</p>
+                <p>Complete documentation submitted for evaluation including technical, design, and analysis work.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 9 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Website Assessment</h5>
+                <p class="text-muted small">(2.5%)</p>
+                <p>Project website and artifact repository submitted for grading.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">June</h6>
+                <h3 class="fw-bold mb-0">2025</h3>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 10 -->
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="me-3 text-end">
+                <h6 class="text-primary-custom mb-0 fw-bold">June</h6>
+                <h3 class="fw-bold mb-0">2025</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Log Book and Status Document 2</h5>
+                <p class="text-muted small">(4%)</p>
+                <p>Documentation of implementation log and second status report submission.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Milestone 11 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+            <div class="card shadow-sm p-4 bg-white">
+                <h5 class="fw-bold">Final Presentation and Viva</h5>
+                <p class="text-muted small">(20%)</p>
+                <p>Full project demonstration and viva evaluation in front of exam panel.</p>
+            </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="ms-3">
+                <h6 class="text-primary-custom mb-0 fw-bold">June</h6>
+                <h3 class="fw-bold mb-0">2025</h3>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+
+
+
+    
+    <!-- What Do We Provide Section -->
+    <section id="what-we-provide" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title ">What Do We Provide</h2>
+            <div class="row">
+            <!-- Early Detection & Feature Extraction -->
+            <div class="col-lg-6">
+                <div class="card mb-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-microscope fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title text-primary-custom">Early Detection & Feature Extraction</h5>
+                    <p class="mb-0">Implements 3D ResNet-18 on PET/CT scans for tumor localization and TNM classification using spatially enhanced DICOM volumes.</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Multiomics Prognostic Modeling -->
+            <div class="col-lg-6">
+                <div class="card mb-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-dna fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title text-primary-custom">Multiomics Prognostic Modeling</h5>
+                    <p class="mb-0">Uses TCGA-LUAD genomic data and L1-penalized Cox models to identify prognostic biomarkers and survival correlations.</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Complication Prediction -->
+            <div class="col-lg-6">
+                <div class="card mb-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-procedures fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title text-primary-custom">Complication Prediction</h5>
+                    <p class="mb-0">Predicts post-diagnosis complications using PLCO clinical data and ensemble ML models such as Random Forest and TabNet.</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Recurrence & Survival Modeling -->
+            <div class="col-lg-6">
+                <div class="card mb-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-notes-medical fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title text-primary-custom">Recurrence & Survival Modeling</h5>
+                    <p class="mb-0">Combines Random Forest and CoxPH models to predict recurrence type and progression-free intervals from genomic and phenotype data.</p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="document" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Documents</h2>
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Project Proposal Files</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Proposal Presentation - Team</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/Proposal Presentation-NSCLC.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Proposal Document - IT21190698</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211 Project Proposal - IT21190698.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Proposal Document - IT21342226</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211 Project Proposal - IT21342226.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Proposal Document - IT21331022</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211 Project Proposal - IT21331022.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Proposal Document - IT21374524</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211 Project Proposal - IT21374524.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+        </div><br><br><br>
+
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Progress Presentation 1</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-powerpoint fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Progress Presentation 1</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211_PP1 Presentation.pptx" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+           
+
+        </div><br><br><br>
+
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Progress Presentation 2</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-powerpoint fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Progress Presentation 2</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/24-25J-211_PP2 Presentation.pptx" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+        </div><br><br><br>
+
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Research Paper</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Research Paper</h6>
+                    <a href="Docs/OneDrive_1_5-23-2025/Final_Paper_24-25J-211.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+        </div><br><br><br>
+
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Final Reports And Presentation</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Report - Team</h6>
+                    <a href="Docs/OneDrive_1_5-24-2025/24-25J-211 - Final Report - Group.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Report - IT21190698</h6>
+                    <a href="Docs/OneDrive_1_5-24-2025/24-25J-211- Final Report- IT21190698.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Report - IT21342226</h6>
+                    <a href="Docs/OneDrive_1_5-24-2025/24-25J-211 IT21342226 Final Report.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Report - IT21331022</h6>
+                    <a href="Docs/OneDrive_1_5-24-2025/Final Report Draft IT21331022.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Final Report - IT21374524</h6>
+                    <a href="Docs/OneDrive_1_5-24-2025/Final Report - 24-25J-211  IT21374524.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+
+
+        </div><br><br><br>
+
+        <div>
+            <p class="text-center text-primary-custom fs-5 mb-5 fw-bold proposal-highlight">Log Book</p>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Document Card -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 text-center shadow-sm border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
+                    <h6 class="fw-bold mb-2">Log Book</h6>
+                    <a href="Docs/24_25J_211_Logbook.pdf" download class="btn btn-primary-custom mt-3 px-4">Download</a>
+                </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+
+    <!-- Tools and Technologies Section -->
+    <section id="tools-technologies" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title ">Tools and Technologies</h2>
+            <div class="row g-4">
+
+            <!-- Python -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fab fa-python fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Python</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- TensorFlow -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-brain fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">TensorFlow</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Keras -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-layer-group fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Keras</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Jupyter -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-book-open fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Jupyter Notebook</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Matplotlib -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-line fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Matplotlib</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- PyTorch -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-fire fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">PyTorch</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Scikit-learn -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-project-diagram fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Scikit-learn</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- TabNet -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-network-wired fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">TabNet</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Pandas -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-table fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Pandas</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- NumPy -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-cubes fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">NumPy</h5>
+                </div>
+                </div>
+            </div>
+
+            <!-- Lifelines -->
+            <div class="col-md-3">
+                <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-heartbeat fa-3x text-primary-custom mb-3"></i>
+                    <h5 class="card-title">Lifelines</h5>
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Team Section -->
+    <section id="team" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="row g-4 justify-content-center">
+
+            <!-- Supervisor -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/sama.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Mr. Samadhi Rathnayake" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Mr. Samadhi Rathnayake</h6>
+                    <p class="text-muted small mb-0">Supervisor</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Co-Supervisor -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/hsya.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Ms. Thisara Shyamalee" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Ms. Thisara Shyamalee</h6>
+                    <p class="text-muted small mb-0">Co-Supervisor</p>
+                </div>
+                </div>
+            </div> 
+            
+            <!-- Member 2 -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/aru.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Arudchayan P" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Arudchayan P</h6>
+                    <p class="text-muted small mb-0">IT21190698</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Member 1 -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/Waseek Lareef.png" class="card-img-top rounded-circle mx-auto mt-3" alt="Waseek M.L" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Waseek M.L</h6>
+                    <p class="text-muted small mb-0">IT21374524</p>
+                </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Member 3 -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/azeez.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Irfan N.A.A" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Irfan N.A.A</h6>
+                    <p class="text-muted small mb-0">IT21331022</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                <img src="Images/shamlaan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Ahamed A.S.S" style="width: 130px; height: 130px; object-fit: cover;">
+                <div class="card-body" style="padding: 1rem 0.5rem; line-height: 1.4;">
+                    <h6 class="card-title text-primary-custom mb-1">Ahamed A.S.S</h6>
+                    <p class="text-muted small mb-0">IT2342226</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- External Supervisor -->
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-secondary-custom text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="mb-4">Feel free to reach out if you have any questions or would like to discuss potential opportunities.</p>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-envelope fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Email</h5>
+                            <p>nsclc360@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-phone fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Phone</h5>
+                            <p>+94 71 209 9432</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Location</h5>
+                            <p>Colombo, Sri Lanka</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-custom">Send a Message</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mb-3">NSCLC 360</h5>
+                    <p>LEVERAGING MULTIOMICS DATA FOR PERSONALIZED LUNG CANCER PROGNOSIS THROUGH INTEGRATED HEALTH PROFILES​.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="#intruduction" class="text-white">Intruduction</a></li>
+                        <li><a href="#domain" class="text-white">Domain</a></li>
+                        <li><a href="#what-we-provide" class="text-white">What-we-provide</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 NSCLC 360. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
